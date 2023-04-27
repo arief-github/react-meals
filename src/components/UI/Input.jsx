@@ -1,11 +1,13 @@
 import React from 'react'
 import styles from './Input.module.scss';
 
-const Input = () => {
+const Input = (props) => {
+  const { label, input } = props;
+
   return (
     <div className={styles.input}>
-        <label></label>
-        <input type='text' />
+        <label htmlFor={input.id}>{label}</label>
+        <input {...input}/>
     </div>
   )
 }

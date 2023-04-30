@@ -8,7 +8,9 @@ const CartProvider = props => {
     const addItemToCartHandler = (item) => {
         dispatch({ type: 'ADD_ITEMS', item: item })
     };
-    const removeItemFromCartHandler = id => {};
+    const removeItemFromCartHandler = id => {
+        dispatch({ type: 'REMOVE_ITEM', id: id })
+    };
     
     const cartContext = {
         items: cartState.items,

@@ -50,8 +50,8 @@
         margin-left: 1rem;
         margin: 0.25rem;
     
-        &::hover,
-        &::active {
+        &:hover,
+        &:active {
             background-color: #8a2b06;
             color: white;
         }

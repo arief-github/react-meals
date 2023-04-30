@@ -5,7 +5,6 @@ const CartItem = (props) => {
   const { name, price, amount, onRemove, onAdd } = props;
   
   const priceToFixed = `$${price.toFixed(2)}`;
-  
   return (
     <li className={styles.cartItem}>
         <div>

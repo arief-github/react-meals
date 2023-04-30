@@ -3,13 +3,15 @@
     margin: 0;
     padding: 0;
     max-height: 20rem;
-    overflow: auto;
-    --ms-overflow-style: none;
-    scrollbar-width: none;
+    overflow-x: auto;
+    // --ms-overflow-style: none;
+    // scrollbar-width: none;
     
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    // &::-webkit-scrollbar {
+    //     width: 0.4rem;
+    //     color: white;
+    //     background-color: #5a1a01;
+    // }
 }
 
 .total {
@@ -33,7 +35,7 @@
         border-radius: 25px;
         margin-left: 1rem ;
         
-        &::hover, &::active {
+        &:hover, &:active {
             background-color: #5a1a01;
             border-color: #5a1a01;
             color: white;

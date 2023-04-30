@@ -6,7 +6,17 @@ import CartItem from './CartItem';
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
-  const totalamount = cartCtx.totalAmount ? `$${cartCtx.totalAmount.toFixed(2)}` : '';
+
+  const totalamount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const hasItems = cartCtx.items.length > 0;
+
+  const cartItemRemoveHander = (id) => {
+    cartCtx.removeItem(id);
+  };
+
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 })
+  };
 
   return (
     <Modal onClose={props.onClose}>
@@ -18,6 +28,8 @@ const Cart = (props) => {
                       name={item.name}
                       price={item.price}
                       amount={item.amount}
+                      onRemove={cartItemRemoveHander.bind(null, item.id)}
+                      onAdd={cartItemAddHandler.bind(null, item)}
                     />
                 ))
             }
@@ -29,8 +41,8 @@ const Cart = (props) => {
         </div>
 
         <div className={styles.actions}>
-            <button className={styles.buttonAlt} onClick={props.onClose}>Close</button>
-            <button className={styles.button}>Order</button>
+            <button className={styles.buttonAlt} onClick={props.onClose}>Close</button> 
+           { hasItems ? <button className={styles.button}>Order</button> : null }
         </div>
     </Modal>
   )

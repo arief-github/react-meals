@@ -1,27 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Cart.module.scss';
 import Modal from '../UI/Modal';
+import CartContext from '../../store/cart-context';
+import CartItem from './CartItem';
 
 const Cart = (props) => {
-  const cartItems = [{
-    id: '1',
-    name: 'Sashimi',
-    price: 12.99
-  }]
+  const cartCtx = useContext(CartContext);
+  const totalamount = cartCtx.totalAmount ? `$${cartCtx.totalAmount.toFixed(2)}` : '';
 
   return (
     <Modal onClose={props.onClose}>
         <ul className={styles.cartItems}>
             {
-                cartItems.map(item => (
-                    <li>{item.name}</li>
+                cartCtx.items.map(item => (
+                    <CartItem
+                      key={item.id}
+                      name={item.name}
+                      price={item.price}
+                      amount={item.amount}
+                    />
                 ))
             }
         </ul>
 
         <div className={styles.total}>
             <span>Total Amount</span>
-            <span>1</span>
+            <span>{totalamount}</span>
         </div>
 
         <div className={styles.actions}>
